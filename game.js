@@ -16,8 +16,9 @@ function preload () {
   // Load & Define our game assets
   game.load.image('sky', 'bettersky.png')
   game.load.image('ground', 'platform.png')
-  game.load.image('diamond', 'diamond.png')
-  game.load.spritesheet('woof', 'woof.png', 32, 32)
+  game.load.image('diamond', 'haunch.png')
+  game.load.spritesheet('woof', 'dino.png', 24, 24)
+  // game.load.spritesheet('woof', 'woof.png', 32, 32)
 }
 
 function create () {
@@ -61,10 +62,10 @@ function create () {
   player.body.collideWorldBounds = true
 
     //  Our two animations, walking left and right.
-  player.animations.add('left', [0, 1], 10, true)
-  player.animations.add('right', [2, 3], 10, true)
+    player.animations.add('right', [17, 23], 10, true)
+    player.animations.add('left', [6, 9], 2, true)
 
-    //  Finally some diamonds to collect
+    //  Finally some haunches to collect
   diamonds = game.add.group()
 
     //  Enable physics for any object that is created in this group
@@ -99,6 +100,7 @@ function update () {
 
     // Configure the controls!
   if (cursors.left.isDown) {
+    console.log(player)
     player.body.velocity.x = -150
 
     player.animations.play('left')
