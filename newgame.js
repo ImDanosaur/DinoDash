@@ -38,27 +38,21 @@ function preload ()
 
 function create ()
 {
-  //  A simple background for our game
   this.add.image(400, 300, 'sky');
 
   platforms = this.physics.add.staticGroup();
 
-  //  Here we create the ground.(the original sprite is 400x32 in size)
   platforms.create(400, 568, 'ground').setScale(2).refreshBody();
 
-  // creating the ledges
   platforms.create(600, 400, 'ground');
   platforms.create(50, 250, 'ground');
   platforms.create(750, 220, 'ground');
 
-  // The player and its settings
   player = this.physics.add.sprite(100, 450, 'dino').setScale(2);
 
-  //  Player physics properties. Give the little guy a slight bounce.
   player.setBounce(0.2);
   player.setCollideWorldBounds(true);
 
-  //  Our player animations, turning, walking left and walking right.
   this.anims.create({
       key: 'turn',
       frames: [ { key: 'dino', frame: 0 } ],
@@ -93,10 +87,8 @@ function create ()
       repeat: -1
   });
 
-  //  Input Events
   cursors = this.input.keyboard.createCursorKeys();
 
-  //  Some haunches to collect, 12 in total, evenly spaced 70 pixels apart along the x axis
   haunches = this.physics.add.group({
       key: 'haunch',
       repeat: 4,
@@ -105,22 +97,18 @@ function create ()
 
   haunches.children.iterate(function (child) {
 
-      //  Give each haunch a slightly different bounce
       child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
 
   });
 
   bombs = this.physics.add.group();
 
-  //  The score
   scoreText = this.add.text(16, 16, 'Haunches Eaten: 0', { fontSize: '24px', fill: '#000' });
 
-  //  Collide the player and the haunches with the platforms
   this.physics.add.collider(player, platforms);
   this.physics.add.collider(haunches, platforms);
   this.physics.add.collider(bombs, platforms);
 
-  //  Checks to see if the player overlaps with any of the haunches, if he does call the collectHaunch function
   this.physics.add.overlap(player, haunches, collectHaunch, null, this);
 
   this.physics.add.collider(player, bombs, hitBomb, null, this);
@@ -166,13 +154,11 @@ function collectHaunch (player, haunch)
 {
   haunch.disableBody(true, true);
 
-  //  Add and update the score
   score += 1;
   scoreText.setText('Haunches Eaten: ' + score);
 
   if (haunches.countActive(true) === 0)
   {
-      //  A new set of haunches to collect
       haunches.children.iterate(function (child) {
 
           child.enableBody(true, child.x, 0, true, true);
