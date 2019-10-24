@@ -29,10 +29,11 @@ var game = new Phaser.Game(config);
 
 function preload ()
 {
+  this.load.image('gameOverScreen', 'assets/gameover.png');
   this.load.image('sky', 'assets/bettersky.png');
   this.load.image('ground', 'assets/platform.png');
   this.load.image('haunch', 'assets/haunch.png');
-  this.load.image('bomb', 'assets/bomb.png', { frameWidth: 10, frameHeight: 26 });
+  this.load.image('bomb', 'assets/boulder.png', { frameWidth: 10, frameHeight: 26 });
   this.load.spritesheet('dino', 'assets/dino.png', { frameWidth: 24, frameHeight: 24 });
 }
 
@@ -44,11 +45,12 @@ function create ()
 
   platforms.create(400, 568, 'ground').setScale(2).refreshBody();
 
-  platforms.create(600, 400, 'ground');
-  platforms.create(50, 250, 'ground');
-  platforms.create(750, 220, 'ground');
+  platforms.create(750, 200, 'ground');
+  platforms.create(50, 270, 'ground');
+  platforms.create(850, 350, 'ground');
+  platforms.create(400, 440, 'ground');
 
-  player = this.physics.add.sprite(100, 450, 'dino').setScale(2);
+  player = this.physics.add.sprite(100, 450, 'dino').setScale(2.5);
 
   player.setBounce(0.2);
   player.setCollideWorldBounds(true);
@@ -67,7 +69,7 @@ function create ()
   });
 
     this.anims.create({
-      key: 'idle',
+      key: 'standing',
       frames: this.anims.generateFrameNumbers('dino', { start: 0, end: 3 }),
       frameRate: 10,
       repeat: -1
@@ -91,7 +93,7 @@ function create ()
 
   haunches = this.physics.add.group({
       key: 'haunch',
-      repeat: 4,
+      repeat: 3,
       setXY: { x: 12, y: 0, stepX: 70 }
   });
 
@@ -118,7 +120,7 @@ function update ()
 {
   if (gameOver)
   {
-      return;
+    this.add.image(400, 300, 'gameOverScreen');
   }
 
   if (cursors.left.isDown)
@@ -141,7 +143,7 @@ function update ()
   {
       player.setVelocityX(0);
 
-      player.anims.play('idle');
+      player.anims.play('standing');
   }
 
   if (cursors.up.isDown && player.body.touching.down)
@@ -167,7 +169,7 @@ function collectHaunch (player, haunch)
 
       var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
 
-      var bomb = bombs.create(x, 16, 'bomb');
+      var bomb = bombs.create(x, 10, 'bomb');
       bomb.setBounce(1);
       bomb.setCollideWorldBounds(true);
       bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
