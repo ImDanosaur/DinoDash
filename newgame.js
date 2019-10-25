@@ -109,7 +109,7 @@ function create ()
 
   haunches = this.physics.add.group({
       key: 'haunch',
-      repeat: 3,
+      repeat: 11,
       setXY: { x: 12, y: 0, stepX: 70 }
   });
 
@@ -136,10 +136,14 @@ function update ()
 {
   if (gameOver)
   {
+
+
     this.add.image(400, 300, 'gameOverScreen');
-    // this.cameras.scene(400, 300, 'gameOverScreen');
+
     level.destroy();
+
     youLose = this.sound.add('youLose');
+
     youLose.play();
   }
 
@@ -170,7 +174,7 @@ function update ()
   {
     jump = this.sound.add('jump');
     jump.play();
-    
+
       player.setVelocityY(-330);
   }
 }
@@ -219,4 +223,8 @@ function hitBomb (player, bomb)
     this.time.delayedCall(1200, function() {
     gameOver = true;    
   })
+
+  this.time.delayedCall(200, function() {
+    this.cameras.main.fadeIn(900);
+  }, [], this);
 }
