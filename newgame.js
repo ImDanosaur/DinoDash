@@ -16,6 +16,13 @@ var config = {
   }
 };
 
+var level;
+var youLose;
+var chomp;
+var running;
+var death;
+var jump;
+
 var player;
 var haunch;
 var bombs;
@@ -29,6 +36,13 @@ var game = new Phaser.Game(config);
 
 function preload ()
 {
+  this.load.audio('level', 'assets/level.mp3');
+  this.load.audio('running', 'assets/running.mp3')
+  this.load.audio('youLose', 'assets/gameover.mp3');
+  this.load.audio('chomp', 'assets/chomp.mp3');
+  this.load.audio('jump', 'assets/jump.mp3');
+  this.load.audio('death', 'assets/death.mp3');
+
   this.load.image('gameOverScreen', 'assets/gameover.png');
   this.load.image('sky', 'assets/bettersky.png');
   this.load.image('ground', 'assets/platform.png');
@@ -39,6 +53,8 @@ function preload ()
 
 function create ()
 {
+  level = this.sound.add('level');
+  level.play();
   this.add.image(400, 300, 'sky');
 
   platforms = this.physics.add.staticGroup();
@@ -121,6 +137,10 @@ function update ()
   if (gameOver)
   {
     this.add.image(400, 300, 'gameOverScreen');
+    // this.cameras.scene(400, 300, 'gameOverScreen');
+    level.destroy();
+    youLose = this.sound.add('youLose');
+    youLose.play();
   }
 
   if (cursors.left.isDown)
@@ -143,11 +163,14 @@ function update ()
   {
       player.setVelocityX(0);
 
-      player.anims.play('standing');
+      player.anims.play('standing', true);
   }
 
   if (cursors.up.isDown && player.body.touching.down)
   {
+    jump = this.sound.add('jump');
+    jump.play();
+    
       player.setVelocityY(-330);
   }
 }
@@ -180,11 +203,20 @@ function collectHaunch (player, haunch)
 
 function hitBomb (player, bomb)
 {
+  death = this.sound.add('death');
+  death.play();
+
   this.physics.pause();
 
   player.setTint(0xff0000);
 
   player.anims.play('death');
-
-  gameOver = true;
+  
+  this.time.delayedCall(300, function() {
+      this.cameras.main.fade(900);
+    }, [], this);
+  
+    this.time.delayedCall(1200, function() {
+    gameOver = true;    
+  })
 }
