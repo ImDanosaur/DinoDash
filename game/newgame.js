@@ -36,19 +36,19 @@ var game = new Phaser.Game(config);
 
 function preload ()
 {
-  this.load.audio('level', 'assets/level.mp3');
-  this.load.audio('running', 'assets/running.mp3')
-  this.load.audio('youLose', 'assets/gameover.mp3');
-  this.load.audio('chomp', 'assets/chomp.mp3');
-  this.load.audio('jump', 'assets/jump.mp3');
-  this.load.audio('death', 'assets/death.mp3');
+  this.load.audio('level', '../assets/level.mp3');
+  this.load.audio('running', './assets/running.mp3')
+  this.load.audio('youLose', '../assets/gameover.mp3');
+  this.load.audio('chomp', '../assets/chomp.mp3');
+  this.load.audio('jump', '../assets/jump.mp3');
+  this.load.audio('death', '../assets/death.mp3');
 
-  this.load.image('gameOverScreen', 'assets/gameover.png');
-  this.load.image('sky', 'assets/bettersky.png');
-  this.load.image('ground', 'assets/platform.png');
-  this.load.image('haunch', 'assets/haunch.png');
-  this.load.image('bomb', 'assets/boulder.png', { frameWidth: 10, frameHeight: 26 });
-  this.load.spritesheet('dino', 'assets/dino.png', { frameWidth: 24, frameHeight: 24 });
+  this.load.image('gameOverScreen', '../assets/gameover.png');
+  this.load.image('sky', '../assets/bettersky.png');
+  this.load.image('ground', '../assets/platform.png');
+  this.load.image('haunch', '../assets/haunch.png');
+  this.load.image('bomb', '../assets/boulder.png', { frameWidth: 10, frameHeight: 26 });
+  this.load.spritesheet('dino', '../assets/dino.png', { frameWidth: 24, frameHeight: 24 });
 }
 
 function create ()

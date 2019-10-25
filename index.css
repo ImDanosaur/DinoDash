@@ -1,6 +1,50 @@
 body {
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  background: #56732d;
+  background: #586260;
+}
+
+.navbar-light .navbar-brand {
+  color: #278b07;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+  color: #218eb8e0;
+}
+
+#one{
+  display: block;
+  width: 100%;
+  padding: .25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color:#1d93fb;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+
+#two{
+  display: block;
+  width: 100%;
+  padding: .25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color: #e6422f;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+
+#three{
+  display: block;
+  width: 100%;
+  padding: .25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color: #f4ae33;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
 }
