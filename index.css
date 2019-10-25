@@ -1,9 +1,16 @@
-body {
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Shadows+Into+Light&display=swap');
+
+body{
   background: #586260;
+  font-family: 'Amatic SC', cursive;
+  font-weight: bold;
+  font-size: 20px;
+
 }
 
-.navbar-light .navbar-brand {
-  color: #278b07;
+.navbar-light .navbar-brand{
+  font-size: 26px;
+  color: #2f5720;
 }
 
 .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
@@ -47,4 +54,27 @@ body {
   white-space: nowrap;
   background-color: transparent;
   border: 0;
+}
+
+/* ---------------Temp Body Content Location---------------------  */
+
+.body-content{
+  margin-top: 1rem;
+  margin-left: 18rem;
+  position: relative;
+  background: #f8f9fa;
+  height: 550px;
+  width: 50%;
+}
+
+.dano-info{
+  display:flex;
+  justify-content: center;
+  font-family: 'Shadows Into Light', cursive;
+  color: #00000080;
+}
+
+#photo{
+  height: 80px;
+  width: 110px;
 }
