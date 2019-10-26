@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC|Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Teko&display=swap');
 
 body{
   background: #586260;
@@ -23,11 +24,12 @@ body{
   padding: .25rem 1.5rem;
   clear: both;
   font-weight: 400;
-  color:#1d93fb;
+  color: #1d93fb;
   text-align: inherit;
   white-space: nowrap;
   background-color: transparent;
   border: 0;
+  font-size: x-large;
 }
 
 #two{
@@ -41,6 +43,7 @@ body{
   white-space: nowrap;
   background-color: transparent;
   border: 0;
+  font-size: x-large;
 }
 
 #three{
@@ -54,20 +57,26 @@ body{
   white-space: nowrap;
   background-color: transparent;
   border: 0;
+  font-size: x-large;
+
 }
 
 /* ---------------Temp Body Content Location---------------------  */
 
 .body-content{
+  display: flex;
+  justify-content: center;
   margin-top: 1rem;
   margin-left: 18rem;
   position: relative;
   background: #f8f9fa;
-  height: 550px;
+  height: 600px;
   width: 50%;
+  padding: 1rem;
 }
 
-.dano-info{
+.dano-header{
+  margin-bottom: 4rem;
   display:flex;
   justify-content: center;
   font-family: 'Shadows Into Light', cursive;
@@ -77,4 +86,36 @@ body{
 #photo{
   height: 80px;
   width: 110px;
+}
+
+#dano{
+  transform: scale(1.5);
+  width: 40px;
+}
+
+.dano-info-header{
+  display: flex;
+  justify-content: space-around;
+}
+
+.h3, h3 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #9cb84b;
+}
+
+.p, p{
+  font-family: 'teko';
+  margin: 0;
+  font-weight: normal;
+}
+
+.haunches{
+  margin-bottom: 2rem;
+}
+
+.h4, h4{
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #e6422f;
 }
